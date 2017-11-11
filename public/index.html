@@ -27,7 +27,7 @@
   </head>
   <body>
 
-    <a-scene networked-scene="
+    <a-scene id="scene" networked-scene="
       room: basic;
       debug: true;
     ">
@@ -79,7 +79,9 @@
           if (!results[2]) return '';
           return decodeURIComponent(results[2].replace(/\+/g, " "));
       }
-      document.querySelector("#itemOfInterest").setAttribute("src",getParameterByName("ioi",window.location))
+      document.querySelector("#itemOfInterest").setAttribute("src", getParameterByName("ioi", window.location));
+      var roomName = getParameterByName("room", window.location);
+      document.querySelector("#scene").setAttribute("networked-scene", "room: " + roomName + "; debug: true;");
     </script>
   </body>
 </html>

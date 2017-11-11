@@ -1,10 +1,10 @@
 {
-  "name": "networked-aframe-glitch",
+  "name": "VRJam2016",
   "version": "0.0.1",
   "engines": {
     "node": "6.9.x"
   },
-  "description": "What am I about?",
+  "description": "WebVR Project",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -21,7 +21,6 @@
   "license": "MIT",
   "keywords": [
     "node",
-    "glitch",
     "express"
   ]
 }
