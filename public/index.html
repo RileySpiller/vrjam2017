@@ -20,11 +20,6 @@
         components: [
           'position',
           'rotation',
-          {
-            selector: '.head',
-            component: 'material',
-            property: 'color'
-          }
         ]
       };
       NAF.schemas.add(avatarSchema);
@@ -37,7 +32,8 @@
       debug: true;
     ">
       <a-assets>
-        <a-asset-item id="test" src="assets/animal.gltf"></a-asset-item>
+
+        <a-asset-item id="avatar" src="assets/animal.gltf"></a-asset-item>
         <img id="grid" src="https://img.gs/bbdkhfbzkk/stretch/https://i.imgur.com/25P1geh.png" crossorigin="anonymous">
         <img id="sky" src="https://img.gs/bbdkhfbzkk/2048x2048,stretch/http://i.imgur.com/WqlqEkq.jpg" crossorigin="anonymous" />
 
@@ -45,13 +41,13 @@
 
         <!-- Avatar -->
         <script id="avatar-template" type="text/html">
-          <a-entity gltf-model="#test"></a-entity>
+          <a-entity gltf-model="#avatar" position="0 -1.6 0" rotation="0 -90 0"></a-entity>
         </script>
 
         <!-- /Templates -->
       </a-assets>
 
-      <a-entity id="player" networked="template:#avatar-template;showLocalTemplate:false;" camera="userHeight: 0" spawn-in-circle="radius:3;" position="0 0 0" wasd-controls look-controls></a-entity>
+      <a-entity id="player" networked="template:#avatar-template;showLocalTemplate:false;" camera spawn-in-circle="radius:3;" wasd-controls look-controls></a-entity>
 
       <a-entity position="0 0 0"
         geometry="primitive: plane; width: 10000; height: 10000;" rotation="-90 0 0"
