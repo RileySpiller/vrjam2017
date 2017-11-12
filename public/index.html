@@ -1,8 +1,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Basic Example — Networked-Aframe</title>
-    <meta name="description" content="Basic Example — Networked-Aframe">
+    <title>VRJam</title>
+    <meta name="description" content="VRJam - 2017">
 
     <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
@@ -35,20 +35,14 @@
         <img id="grid" src="https://img.gs/bbdkhfbzkk/stretch/https://i.imgur.com/25P1geh.png" crossorigin="anonymous">
         <img id="sky" src="https://img.gs/bbdkhfbzkk/2048x2048,stretch/http://i.imgur.com/WqlqEkq.jpg" crossorigin="anonymous" />
 
-        <!-- Templates -->
-
-        <!-- Avatar -->
         <script id="avatar-template" type="text/html">
           <a-entity>
             <a-entity gltf-model="#avatar" position="0 -1.6 0" rotation="0 -90 0"></a-entity>
           </a-entity>
         </script>
-
-        <!-- /Templates -->
       </a-assets>
 
       <a-entity id="player" networked="template:#avatar-template;showLocalTemplate:false;" camera="userHeight:1.6" spawn-in-circle="radius:3;" wasd-controls look-controls></a-entity>
-a
 
       <a-entity light="color: #ccccff; intensity: 1; type: ambient;" visible=""></a-entity>
       <a-entity light="color: #ffaaff; intensity: 1.5" position="5 5 5"></a-entity>
@@ -59,39 +53,6 @@ a
       <a-entity gltf-model="#scenery" position="0 0 0 " rotation="0 0 0"></a-entity>
     </a-scene>
 
-    <script>
-      // On mobile remove elements that are resource heavy
-      var isMobile = AFRAME.utils.device.isMobile();
-
-      if (isMobile) {
-        var particles = document.getElementById('particles');
-        particles.parentNode.removeChild(particles);
-      }
-      function getParameterByName(name, url) {
-          if (!url) url = window.location.href;
-          name = name.replace(/[\[\]]/g, "\\$&");
-          var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-              results = regex.exec(url);
-          if (!results) return null;
-          if (!results[2]) return '';
-          return decodeURIComponent(results[2].replace(/\+/g, " "));
-      }
-
-       document.querySelector("#itemOfInterest").addEventListener('loaded', function() {
-         document.querySelector('#ioi').addEventListener('model-loaded', function() {
-           var bbox = new THREE.Box3().setFromObject(this.object3D)
-           var x = bbox.max.x-bbox.min.x;
-           var y = bbox.max.y-bbox.min.y;
-           var z = bbox.max.z-bbox.min.z;
-           var m = Math.max(x,Math.max(y,z));
-           var s = 1.5/m;
-           this.setAttribute("scale", s+" "+s+" "+s);
-         });
-       });
-      document.querySelector("#itemOfInterest").setAttribute("src", getParameterByName("ioi", window.location));
-      document.querySelector("#scenery").setAttribute("src", getParameterByName("scenery", window.location));
-      var roomName = getParameterByName("room", window.location);
-      document.querySelector("#scene").setAttribute("networked-scene", "room: " + roomName + "; debug: true;");
-    </script>
+    <script src="main.js"></script>
   </body>
 </html>

@@ -1,5 +1,5 @@
 {
-  "name": "VRJam2016",
+  "name": "VRJam2017",
   "version": "0.0.1",
   "engines": {
     "node": "6.9.x"
@@ -16,7 +16,7 @@
     "node": "6.9.x"
   },
   "repository": {
-    "url": "https://glitch.com/#!/project/networked-aframe"
+    "url": "https://github.com/RileySpiller/vrjam2017"
   },
   "license": "MIT",
   "keywords": [
