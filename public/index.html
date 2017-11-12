@@ -30,6 +30,7 @@
     <a-scene id="scene">
       <a-assets>
         <a-asset-item id="itemOfInterest" src=""></a-asset-item>
+        <a-asset-item id="scenery" src=""></a-asset-item>
         <a-asset-item id="avatar" src="assets/animal.gltf"></a-asset-item>
         <img id="grid" src="https://img.gs/bbdkhfbzkk/stretch/https://i.imgur.com/25P1geh.png" crossorigin="anonymous">
         <img id="sky" src="https://img.gs/bbdkhfbzkk/2048x2048,stretch/http://i.imgur.com/WqlqEkq.jpg" crossorigin="anonymous" />
@@ -79,6 +80,7 @@
           return decodeURIComponent(results[2].replace(/\+/g, " "));
       }
       document.querySelector("#itemOfInterest").setAttribute("src", getParameterByName("ioi", window.location));
+      document.querySelector("#scenery").setAttribute("src", getParameterByName("scenery", window.location));
       var roomName = getParameterByName("room", window.location);
       document.querySelector("#scene").setAttribute("networked-scene", "room: " + roomName + "; debug: true;");
     </script>
