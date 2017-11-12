@@ -26,6 +26,8 @@ function getParameterByName(name, url) {
      this.setAttribute("scale", s+" "+s+" "+s);
    });
  });
+ console.log('INCOMING');
+ console.log(getParameterByName("ioi", window.location));
 document.querySelector("#itemOfInterest").setAttribute("src", getParameterByName("ioi", window.location));
 document.querySelector("#scenery").setAttribute("src", getParameterByName("scenery", window.location));
 var roomName = getParameterByName("room", window.location);
