@@ -28,7 +28,7 @@
   <body>
 
     <a-scene id="scene">
-      <a-assets>
+      <a-assets id="assets-list">
         <a-asset-item id="itemOfInterest" src=""></a-asset-item>
         <a-asset-item id="scenery" src=""></a-asset-item>
         <a-asset-item id="avatar" src="assets/animal.gltf"></a-asset-item>
@@ -47,19 +47,16 @@
         <!-- /Templates -->
       </a-assets>
 
-      <a-entity id="player" networked="template:#avatar-template;showLocalTemplate:false;" camera spawn-in-circle="radius:3;" wasd-controls look-controls></a-entity>
-
-      <a-entity position="0 0 0"
-        geometry="primitive: plane; width: 10000; height: 10000;" rotation="-90 0 0"
-        material="src: #grid; repeat: 10000 10000; transparent: true; metalness:0.6; roughness: 0.4; sphericalEnvMap: #sky;"></a-entity>
+      <a-entity id="player" networked="template:#avatar-template;showLocalTemplate:false;" camera="userHeight:1.6" spawn-in-circle="radius:3;" wasd-controls look-controls></a-entity>
+a
 
       <a-entity light="color: #ccccff; intensity: 1; type: ambient;" visible=""></a-entity>
       <a-entity light="color: #ffaaff; intensity: 1.5" position="5 5 5"></a-entity>
 
-      <a-entity gltf-model="#avatar" position="0 -1.6 0" rotation="0 -90 0"></a-entity>
       <a-sky src="#sky" rotation="0 -90 0"></a-sky>
       <a-entity id="particles" particle-system="preset: snow"></a-entity>
       <a-entity gltf-model="#itemOfInterest" position="0 0 0" rotation="0 0 0"></a-entity>
+      <a-entity gltf-model="#scenery" position="0 0 0 " rotation="0 0 0"></a-entity>
     </a-scene>
 
     <script>
@@ -79,6 +76,7 @@
           if (!results[2]) return '';
           return decodeURIComponent(results[2].replace(/\+/g, " "));
       }
+
       document.querySelector("#itemOfInterest").setAttribute("src", getParameterByName("ioi", window.location));
       document.querySelector("#scenery").setAttribute("src", getParameterByName("scenery", window.location));
       var roomName = getParameterByName("room", window.location);
