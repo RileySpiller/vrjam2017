@@ -55,7 +55,7 @@ a
 
       <a-sky src="#sky" rotation="0 -90 0"></a-sky>
       <a-entity id="particles" particle-system="preset: snow"></a-entity>
-      <a-entity gltf-model="#itemOfInterest" position="0 0 0" rotation="0 0 0"></a-entity>
+      <a-entity id="ioi" gltf-model="#itemOfInterest" position="0 .75 0" rotation="0 0 0"></a-entity>
       <a-entity gltf-model="#scenery" position="0 0 0 " rotation="0 0 0"></a-entity>
     </a-scene>
 
@@ -77,6 +77,17 @@ a
           return decodeURIComponent(results[2].replace(/\+/g, " "));
       }
 
+       document.querySelector("#itemOfInterest").addEventListener('loaded', function() {
+         document.querySelector('#ioi').addEventListener('model-loaded', function() {
+           var bbox = new THREE.Box3().setFromObject(this.object3D)
+           var x = bbox.max.x-bbox.min.x;
+           var y = bbox.max.y-bbox.min.y;
+           var z = bbox.max.z-bbox.min.z;
+           var m = Math.max(x,Math.max(y,z));
+           var s = 1.5/m;
+           this.setAttribute("scale", s+" "+s+" "+s);
+         });
+       });
       document.querySelector("#itemOfInterest").setAttribute("src", getParameterByName("ioi", window.location));
       document.querySelector("#scenery").setAttribute("src", getParameterByName("scenery", window.location));
       var roomName = getParameterByName("room", window.location);
