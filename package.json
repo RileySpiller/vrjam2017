@@ -12,9 +12,6 @@
   "dependencies": {
     "networked-aframe": "^0.4.0"
   },
-  "engines": {
-    "node": "6.9.x"
-  },
   "repository": {
     "url": "https://github.com/RileySpiller/vrjam2017"
   },
